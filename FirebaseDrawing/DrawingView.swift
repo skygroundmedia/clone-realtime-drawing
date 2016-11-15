@@ -23,6 +23,33 @@ class DrawingView: UIView {
         setNeedsDisplay()
     }
     
+    //When a user touches the screen, it will begin drawing
+    func addTouch(touches:Set<UITouch>){
+        if currentPath != nil {
+            for touch in touches {
+                //Check if touch is == currentTouch
+                if touch == currentTouch {
+                    //A. Get Location
+                    let currentPoint = currentTouch?.location(in: self)
+                    //B. Check if it exist
+                    if let currentPoint = currentPoint{
+                        //C. Append to path
+                        currentPath?.append(currentPoint)
+                        print("addTouch: A new path with \(currentPoint)")
+                    } else {
+                        print("Fount an Empty touch")
+                    }
+                }
+            }
+        }
+        refreshDisplay()
+    }
+    
+    func resetPaths(){
+        currentTouch = nil
+        currentPath = nil
+    }
+    
     //Mark: Draw
     override func draw(_ rect: CGRect) {
         super.draw(rect)
@@ -79,7 +106,7 @@ class DrawingView: UIView {
             if let currentPoint = currentPoint{
                 currentPath = []
                 currentPath?.append(currentPoint)
-                print("touchesBegan: A new path with \(currentPoint)")
+                //print("touchesBegan: A new path with \(currentPoint)")
             } else {
                 print("Fount an Empty touch")
             }
@@ -89,57 +116,20 @@ class DrawingView: UIView {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if currentPath != nil {
-            for touch in touches {
-                //Check if touch is == currentTouch
-                if touch == currentTouch {
-                    //A. Get Location
-                    let currentPoint = currentTouch?.location(in: self)
-                    //B. Check if it exist
-                    if let currentPoint = currentPoint{
-                        //C. Append to path
-                        currentPath?.append(currentPoint)
-                        print("touchesMoved: A new path with \(currentPoint)")
-                    } else {
-                        print("Fount an Empty touch")
-                    }
-                }
-            }
-        }
-        refreshDisplay()
+        addTouch(touches: touches)
         super.touchesMoved(touches, with: event)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        currentTouch = nil
-        currentPath = nil
         print("touchesCancelled:")
+        resetPaths()
         refreshDisplay()
         super.touchesCancelled(touches, with: event)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if currentPath != nil {
-            //Look thorugh all the touches
-            for touch in touches {
-                //Check if touch is == currentTouch
-                if touch == currentTouch {
-                    //A. Get Location
-                    let currentPoint = currentTouch?.location(in: self)
-                    //B. Check if it exist
-                    if let currentPoint = currentPoint{
-                        //C. Append to path
-                        currentPath?.append(currentPoint)
-                        print("touchesEnded: A new path with \(currentPoint)")
-                    } else {
-                        print("Fount an Empty touch")
-                    }
-                }
-            }
-        }
-        refreshDisplay()
-        currentTouch = nil
-        currentPath = nil
+        addTouch(touches: touches)
+        resetPaths()
         super.touchesEnded(touches, with: event)
     }
 }
