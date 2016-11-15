@@ -14,6 +14,7 @@
 		E1ABD9361DDA77E0007A4E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */; };
 		E1ABD9391DDA77E0007A4E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9371DDA77E0007A4E38 /* LaunchScreen.storyboard */; };
 		E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD9401DDA8904007A4E38 /* DrawingView.swift */; };
+		E1D9D0D61DDB477900D9786E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9D0D51DDB477900D9786E /* Config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E1ABD9381DDA77E0007A4E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1ABD93A1DDA77E0007A4E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1ABD9401DDA8904007A4E38 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		E1D9D0D51DDB477900D9786E /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		EB54BC7B7DFEA05FA46F38AC /* Pods-FirebaseDrawing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseDrawing.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing.release.xcconfig"; sourceTree = "<group>"; };
 		EEF92B05AF389FB47F1F521A /* Pods-FirebaseDrawing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseDrawing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */,
+				E1D9D0D51DDB477900D9786E /* Config.swift */,
 				E1ABD9301DDA77E0007A4E38 /* ViewController.swift */,
 				E1ABD9401DDA8904007A4E38 /* DrawingView.swift */,
 				E1ABD9321DDA77E0007A4E38 /* Main.storyboard */,
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */,
+				E1D9D0D61DDB477900D9786E /* Config.swift in Sources */,
 				E1ABD9311DDA77E0007A4E38 /* ViewController.swift in Sources */,
 				E1ABD92F1DDA77E0007A4E38 /* AppDelegate.swift in Sources */,
 			);
