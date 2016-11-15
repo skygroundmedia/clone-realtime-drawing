@@ -31,16 +31,20 @@ class SNSPath: NSObject {
     
     init(point:CGPoint, color:UIColor) {
         self.color = color
-        self.points = []
-        
-        super.init()
+        self.points = Array<SNSPoint>()
 
         //Start tracking SNSPoint paths
-        addPoint(point: point)
+        let newPoint = SNSPoint(point: point)
+        //Append the new point
+        points.append(newPoint)
+
+        super.init()
     }
     
     func addPoint(point:CGPoint){
+        //Start tracking SNSPoint paths
         let newPoint = SNSPoint(point: point)
+        //Append the new point
         points.append(newPoint)
     }
     
@@ -55,11 +59,10 @@ class SNSPath: NSObject {
             coordinates.add(position)
         }
         //This is the master dictionary you will send to DB
-        let dictionary = NSDictionary()
-            dictionary.setValue(color, forKey: "color")
-            dictionary.setValue(coordinates, forKey: "coordinates")
-     
-        print(dictionary)
+        let dictionary = NSMutableDictionary()
+            dictionary["color"] = color
+            dictionary["points"] = coordinates
+        print("SNSPath::serialize: \(dictionary)")
         return dictionary
     }
 }
