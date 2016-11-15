@@ -1,2 +1,9 @@
-# clone-realtime-drawing
-Real-time collaborative drawing app
+# Collaborative Drawing App
+
+This app uses Firebase to deliver a real-time collaborative drawing app. 
+
+
+### Tech
+
+* Firebase
+* Swift 3
