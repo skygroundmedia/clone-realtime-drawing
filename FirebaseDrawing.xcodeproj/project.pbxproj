@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEB2C28ABFFAACF367F08BFC /* libPods-FirebaseDrawing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2D75830E93DD36C0F9F18B /* libPods-FirebaseDrawing.a */; };
 		E1ABD92F1DDA77E0007A4E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */; };
 		E1ABD9311DDA77E0007A4E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD9301DDA77E0007A4E38 /* ViewController.swift */; };
 		E1ABD9341DDA77E0007A4E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9321DDA77E0007A4E38 /* Main.storyboard */; };
 		E1ABD9361DDA77E0007A4E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */; };
 		E1ABD9391DDA77E0007A4E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9371DDA77E0007A4E38 /* LaunchScreen.storyboard */; };
+		E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD9401DDA8904007A4E38 /* DrawingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A2D75830E93DD36C0F9F18B /* libPods-FirebaseDrawing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirebaseDrawing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1ABD92B1DDA77E0007A4E38 /* FirebaseDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1ABD9301DDA77E0007A4E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1ABD9381DDA77E0007A4E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1ABD93A1DDA77E0007A4E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1ABD9401DDA8904007A4E38 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
+		EB54BC7B7DFEA05FA46F38AC /* Pods-FirebaseDrawing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseDrawing.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing.release.xcconfig"; sourceTree = "<group>"; };
+		EEF92B05AF389FB47F1F521A /* Pods-FirebaseDrawing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseDrawing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB2C28ABFFAACF367F08BFC /* libPods-FirebaseDrawing.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DE9F475B062A7F3ABACFA08 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEF92B05AF389FB47F1F521A /* Pods-FirebaseDrawing.debug.xcconfig */,
+				EB54BC7B7DFEA05FA46F38AC /* Pods-FirebaseDrawing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E1ABD9221DDA77DF007A4E38 = {
 			isa = PBXGroup;
 			children = (
 				E1ABD92D1DDA77E0007A4E38 /* FirebaseDrawing */,
 				E1ABD92C1DDA77E0007A4E38 /* Products */,
+				1DE9F475B062A7F3ABACFA08 /* Pods */,
+				FB0C7A77B7AB35FB1566A309 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +74,21 @@
 			children = (
 				E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */,
 				E1ABD9301DDA77E0007A4E38 /* ViewController.swift */,
+				E1ABD9401DDA8904007A4E38 /* DrawingView.swift */,
 				E1ABD9321DDA77E0007A4E38 /* Main.storyboard */,
 				E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */,
 				E1ABD9371DDA77E0007A4E38 /* LaunchScreen.storyboard */,
 				E1ABD93A1DDA77E0007A4E38 /* Info.plist */,
 			);
 			path = FirebaseDrawing;
+			sourceTree = "<group>";
+		};
+		FB0C7A77B7AB35FB1566A309 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A2D75830E93DD36C0F9F18B /* libPods-FirebaseDrawing.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1ABD93D1DDA77E0007A4E38 /* Build configuration list for PBXNativeTarget "FirebaseDrawing" */;
 			buildPhases = (
+				8D7046E3433C8569C8B4FE45 /* [CP] Check Pods Manifest.lock */,
 				E1ABD9271DDA77DF007A4E38 /* Sources */,
 				E1ABD9281DDA77DF007A4E38 /* Frameworks */,
 				E1ABD9291DDA77DF007A4E38 /* Resources */,
+				8B250814AC1C117048633F65 /* [CP] Embed Pods Frameworks */,
+				FBA0CFA395143BECBA63B232 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +126,7 @@
 				TargetAttributes = {
 					E1ABD92A1DDA77DF007A4E38 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9M6TS6JXWF;
+						DevelopmentTeam = 4B48EV3P22;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -132,11 +162,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8B250814AC1C117048633F65 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D7046E3433C8569C8B4FE45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FBA0CFA395143BECBA63B232 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E1ABD9271DDA77DF007A4E38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */,
 				E1ABD9311DDA77E0007A4E38 /* ViewController.swift in Sources */,
 				E1ABD92F1DDA77E0007A4E38 /* AppDelegate.swift in Sources */,
 			);
@@ -259,10 +338,12 @@
 		};
 		E1ABD93E1DDA77E0007A4E38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEF92B05AF389FB47F1F521A /* Pods-FirebaseDrawing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9M6TS6JXWF;
+				DEVELOPMENT_TEAM = 4B48EV3P22;
 				INFOPLIST_FILE = FirebaseDrawing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chrisjmendez.FirebaseDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -272,10 +353,12 @@
 		};
 		E1ABD93F1DDA77E0007A4E38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB54BC7B7DFEA05FA46F38AC /* Pods-FirebaseDrawing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9M6TS6JXWF;
+				DEVELOPMENT_TEAM = 4B48EV3P22;
 				INFOPLIST_FILE = FirebaseDrawing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chrisjmendez.FirebaseDrawing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -302,6 +385,7 @@
 				E1ABD93F1DDA77E0007A4E38 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

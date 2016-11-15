@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FirebaseDrawing" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,7 +17,56 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="chW-C1-4ir">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6EY-Tc-17m" customClass="DrawingView" customModule="FirebaseDrawing" customModuleProvider="target">
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tXU-VY-dVv">
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="DUp-pW-mLw">
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47E-oI-BbN">
+                                                        <state key="normal" title="Clear Screen"/>
+                                                    </button>
+                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4qK-Ad-WUf">
+                                                        <state key="normal" title="To be set"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iqp-5h-HaC">
+                                                        <state key="normal" title="Change Color"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="DUp-pW-mLw" firstAttribute="leading" secondItem="tXU-VY-dVv" secondAttribute="leading" id="AOn-Rd-pHe"/>
+                                            <constraint firstAttribute="trailing" secondItem="DUp-pW-mLw" secondAttribute="trailing" id="Slk-Ph-93t"/>
+                                            <constraint firstItem="DUp-pW-mLw" firstAttribute="top" secondItem="tXU-VY-dVv" secondAttribute="top" id="Wkd-hu-cHA"/>
+                                            <constraint firstAttribute="height" constant="66" id="rJY-5s-cZd"/>
+                                            <constraint firstAttribute="bottom" secondItem="DUp-pW-mLw" secondAttribute="bottom" id="uWj-Lr-hh5"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="6EY-Tc-17m" firstAttribute="trailing" secondItem="chW-C1-4ir" secondAttribute="trailingMargin" id="1if-Zc-qrp"/>
+                                    <constraint firstItem="6EY-Tc-17m" firstAttribute="leading" secondItem="chW-C1-4ir" secondAttribute="leadingMargin" id="2me-9s-GbM"/>
+                                    <constraint firstItem="tXU-VY-dVv" firstAttribute="top" secondItem="6EY-Tc-17m" secondAttribute="bottom" id="FYc-8i-5CQ"/>
+                                    <constraint firstItem="tXU-VY-dVv" firstAttribute="bottom" secondItem="chW-C1-4ir" secondAttribute="bottomMargin" id="TEl-2P-L3V"/>
+                                    <constraint firstItem="tXU-VY-dVv" firstAttribute="leading" secondItem="chW-C1-4ir" secondAttribute="leadingMargin" id="UK9-Zd-Zhv"/>
+                                    <constraint firstItem="6EY-Tc-17m" firstAttribute="top" secondItem="chW-C1-4ir" secondAttribute="topMargin" id="Zl8-EU-7gg"/>
+                                    <constraint firstItem="tXU-VY-dVv" firstAttribute="trailing" secondItem="chW-C1-4ir" secondAttribute="trailingMargin" id="e1Z-B8-743"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="chW-C1-4ir" secondAttribute="bottom" id="EYn-Ft-w2m"/>
+                            <constraint firstItem="chW-C1-4ir" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="LCr-da-XP7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="chW-C1-4ir" secondAttribute="trailing" id="hkO-Jq-6Kd"/>
+                            <constraint firstItem="chW-C1-4ir" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rKX-Ss-1wy"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
