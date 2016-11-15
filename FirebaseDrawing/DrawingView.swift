@@ -10,6 +10,8 @@ import UIKit
 
 class DrawingView: UIView {
     
+    let strokeThickness:CGFloat = 1.5
+    
     var currentTouch:UITouch?
     
     //While you drag your finger, you want to keep a record of all the points
@@ -30,7 +32,7 @@ class DrawingView: UIView {
             //B. With this context, we need to creat a variable
             if let context = UIGraphicsGetCurrentContext(){
                 //C. Use the context. Passs the context onto the functions
-                context.setLineWidth(0.5)
+                context.setLineWidth( strokeThickness )
                 context.beginPath()
                 context.setStrokeColor(UIColor.black.cgColor)
                 //D. Pass the CG Color we want
@@ -48,10 +50,13 @@ class DrawingView: UIView {
                         context.addLine(to: CGPoint(x: currentPoint.x, y: currentPoint.y))
                     }
                      */
-                    for i in stride(from: startPoint, to: ((currentPath?.count)! - 1), by: 1) {
-                        let currentPoint = currentPath![i]
-                        //H.  Adding new points in the array to the screen
-                        context.addLine(to: CGPoint(x: currentPoint.x, y: currentPoint.y))
+                    
+                    if (currentPath?.count)! > 1 {
+                        for i in stride(from: startPoint, to: ((currentPath?.count)! - 1), by: 1) {
+                            let currentPoint = currentPath![i]
+                            //H.  Adding new points in the array to the screen
+                            context.addLine(to: CGPoint(x: currentPoint.x, y: currentPoint.y))
+                        }
                     }
                     
                     //Now that we've added the points to the array, let's draw them
