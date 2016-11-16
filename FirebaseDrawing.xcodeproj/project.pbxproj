@@ -15,7 +15,6 @@
 		E1ABD9361DDA77E0007A4E38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */; };
 		E1ABD9391DDA77E0007A4E38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9371DDA77E0007A4E38 /* LaunchScreen.storyboard */; };
 		E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD9401DDA8904007A4E38 /* DrawingView.swift */; };
-		E1D9D0D61DDB477900D9786E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9D0D51DDB477900D9786E /* Config.swift */; };
 		E1D9D0D81DDB4AC200D9786E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1D9D0D71DDB4AC200D9786E /* GoogleService-Info.plist */; };
 		E1D9D0DA1DDB6DD900D9786E /* SNSPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9D0D91DDB6DD900D9786E /* SNSPath.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		E1ABD9381DDA77E0007A4E38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1ABD93A1DDA77E0007A4E38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1ABD9401DDA8904007A4E38 /* DrawingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingView.swift; sourceTree = "<group>"; };
-		E1D9D0D51DDB477900D9786E /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E1D9D0D71DDB4AC200D9786E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1D9D0D91DDB6DD900D9786E /* SNSPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SNSPath.swift; path = Interfaces/SNSPath.swift; sourceTree = "<group>"; };
 		EB54BC7B7DFEA05FA46F38AC /* Pods-FirebaseDrawing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseDrawing.release.xcconfig"; path = "Pods/Target Support Files/Pods-FirebaseDrawing/Pods-FirebaseDrawing.release.xcconfig"; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */,
-				E1D9D0D51DDB477900D9786E /* Config.swift */,
 				E1ABD9301DDA77E0007A4E38 /* ViewController.swift */,
 				E1D9D0D91DDB6DD900D9786E /* SNSPath.swift */,
 				E1ABD9401DDA8904007A4E38 /* DrawingView.swift */,
@@ -230,7 +227,6 @@
 			files = (
 				E1A1A5181DDBD4C100F8146E /* Server.swift in Sources */,
 				E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */,
-				E1D9D0D61DDB477900D9786E /* Config.swift in Sources */,
 				E1D9D0DA1DDB6DD900D9786E /* SNSPath.swift in Sources */,
 				E1ABD9311DDA77E0007A4E38 /* ViewController.swift in Sources */,
 				E1ABD92F1DDA77E0007A4E38 /* AppDelegate.swift in Sources */,

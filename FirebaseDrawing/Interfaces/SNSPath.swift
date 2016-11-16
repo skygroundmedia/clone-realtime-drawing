@@ -24,7 +24,7 @@ class SNSPoint:NSObject {
     }
 }
 
-//MARK: - Drawing Paths triggered by DrawingView::touchesBegan
+//MARK: - Drawing Paths are a collection of Drawing Points
 class SNSPath: NSObject {
     var points:[SNSPoint]
     var color:UIColor
@@ -44,9 +44,9 @@ class SNSPath: NSObject {
         points.append(newPoint)
     }
     
-    //Convert the drawing data to serialized JSON
+    //MARK: Serialize to JSON
     func serialize() -> NSDictionary{
-        //Add each point within points to dict
+        //A. Create a dictionary of x/y coordinates
         let coordinates = NSMutableArray()
         for point in points {
             let position = NSMutableDictionary()
@@ -54,11 +54,12 @@ class SNSPath: NSObject {
                 position["y"] = Int(point.y!)
             coordinates.add(position)
         }
-        //This is the master dictionary you will send to DB
+        //B. Create a dictionary of color and coordinates
         let dictionary = NSMutableDictionary()
             dictionary["color"] = "\(color)"
             dictionary["points"] = coordinates
-        print("SNSPath::serialize: \(dictionary)")
+        
+        //print("SNSPath::serialize: \(dictionary)")
         return dictionary
     }
 }

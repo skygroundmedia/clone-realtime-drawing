@@ -12,14 +12,12 @@ import Firebase
 import FirebaseDatabase
 
 class Server {
-    
+    //Singleton
     static let sharedInstance = Server()
     private init(){}
     
     let pathsInLine = NSMutableSet()
-    
     let rootRef = FIRDatabase.database().reference()
-    
     let ref = FIRDatabase.database().reference(withPath: "drawing-paths")
     
     func testUnit(text:String){
@@ -27,13 +25,16 @@ class Server {
     }
     
     // Listen to Firebase when new paths are edited
-    func addPathToSend(path:SNSPath) -> String{
+    func saveToDB(path:SNSPath) -> String{
         //A. Get the Firebase Key
         let firebaseKey = ref.childByAutoId()
+        //B. JSON Data we publish to Firebase
+        let jsonData = path.serialize()
         
         pathsInLine.add(firebaseKey)
         
-        firebaseKey.setValue(path.serialize()) { (error, ref) in
+        //C. Save to Firebase Server
+        firebaseKey.setValue(jsonData) { (error, ref) in
             if let error = error  {
                 print("Error saving to Firebase \(error.localizedDescription)")
             } else {

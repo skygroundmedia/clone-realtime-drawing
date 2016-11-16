@@ -7,6 +7,7 @@
 //
 //  http://stackoverflow.com/questions/37401102/binary-operator-cannot-be-applied-to-operands-of-type-int-and-cgfloat
 //
+//  Create an arrary with all the paths but when a new firebase path get's added, let's only transfer that new data path.
 import UIKit
 
 class DrawingView: UIView {
@@ -20,6 +21,8 @@ class DrawingView: UIView {
     var currentSNSPath:SNSPath?
     //Used when we add our own values and when we get an update from Firebase
     var allPaths:[SNSPath]?
+    //Each key represents a differnt user publish a path
+    var allKeys:[String]?
     //Instance of Firebase DB
     var server = Server.sharedInstance
 
@@ -43,12 +46,15 @@ class DrawingView: UIView {
         print("DrawingView::resetPaths")
         currentTouch = nil
         currentPath = nil
-        //SHow off what has been collected
-        currentSNSPath?.serialize()
-        //
-        if let path = currentSNSPath{
+    }
+    
+    func sendDataToServer(){
+        if let path = currentSNSPath {
             //Send to Firebase Server
-            server.addPathToSend(path: path)
+            let returnKey = server.saveToDB(path: path)
+            //This is the key from firebase. When firebase announces an update / change
+            //  this will simply say, sure, send the update
+            allKeys?.append(returnKey)
             //Send to All Paths Array
             allPaths?.append(path)
         }
@@ -148,11 +154,13 @@ class DrawingView: UIView {
         print("DrawingView::touchesEnded:")
         addTouch(touches: touches)
         resetPaths()
+        sendDataToServer()
         super.touchesEnded(touches, with: event)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         resetPaths()
+        sendDataToServer()
         print("DrawingView::touchesCancelled:")
         clearDisplay()
         super.touchesCancelled(touches, with: event)
