@@ -33,12 +33,8 @@ class SNSPath: NSObject {
         self.color = color
         self.points = Array<SNSPoint>()
 
-        //Start tracking SNSPoint paths
-        let newPoint = SNSPoint(point: point)
-        //Append the new point
-        points.append(newPoint)
-
         super.init()
+        addPoint(point: point)
     }
     
     func addPoint(point:CGPoint){
@@ -54,8 +50,8 @@ class SNSPath: NSObject {
         let coordinates = NSMutableArray()
         for point in points {
             let position = NSMutableDictionary()
-                position["x"] = point.x
-                position["y"] = point.y
+                position["x"] = Int(point.x!)
+                position["y"] = Int(point.y!)
             coordinates.add(position)
         }
         //This is the master dictionary you will send to DB

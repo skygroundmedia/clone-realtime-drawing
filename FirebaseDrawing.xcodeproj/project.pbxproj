@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BEB2C28ABFFAACF367F08BFC /* libPods-FirebaseDrawing.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A2D75830E93DD36C0F9F18B /* libPods-FirebaseDrawing.a */; };
+		E1A1A5181DDBD4C100F8146E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A1A5171DDBD4C100F8146E /* Server.swift */; };
 		E1ABD92F1DDA77E0007A4E38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */; };
 		E1ABD9311DDA77E0007A4E38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ABD9301DDA77E0007A4E38 /* ViewController.swift */; };
 		E1ABD9341DDA77E0007A4E38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1ABD9321DDA77E0007A4E38 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		7A2D75830E93DD36C0F9F18B /* libPods-FirebaseDrawing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FirebaseDrawing.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A1A5171DDBD4C100F8146E /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		E1ABD92B1DDA77E0007A4E38 /* FirebaseDrawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseDrawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1ABD92E1DDA77E0007A4E38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1ABD9301DDA77E0007A4E38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				E1ABD9301DDA77E0007A4E38 /* ViewController.swift */,
 				E1D9D0D91DDB6DD900D9786E /* SNSPath.swift */,
 				E1ABD9401DDA8904007A4E38 /* DrawingView.swift */,
+				E1A1A5171DDBD4C100F8146E /* Server.swift */,
 				E1ABD9321DDA77E0007A4E38 /* Main.storyboard */,
 				E1ABD9351DDA77E0007A4E38 /* Assets.xcassets */,
 				E1ABD9371DDA77E0007A4E38 /* LaunchScreen.storyboard */,
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1A1A5181DDBD4C100F8146E /* Server.swift in Sources */,
 				E1ABD9411DDA8904007A4E38 /* DrawingView.swift in Sources */,
 				E1D9D0D61DDB477900D9786E /* Config.swift in Sources */,
 				E1D9D0DA1DDB6DD900D9786E /* SNSPath.swift in Sources */,

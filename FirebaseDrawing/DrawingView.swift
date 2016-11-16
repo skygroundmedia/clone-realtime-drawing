@@ -17,10 +17,13 @@ class DrawingView: UIView {
     var currentColor:UIColor?
     var currentSNSPath:SNSPath?
     
+    var allPaths:[SNSPath]?
+    
     //While you drag your finger, you want to keep a record of all the points
     var currentPath:[CGPoint]?
 
-    //MARK: - SNS Path data is an interface for Firebase
+    //MARK: - Firebase Related Data
+    //Start preparing the data to send to Firebase
     func initSNSPath(point:CGPoint, color:UIColor){
         currentSNSPath = SNSPath(point: point, color: color)
     }
@@ -41,6 +44,10 @@ class DrawingView: UIView {
         currentPath = nil
         //SHow off what has been collected
         currentSNSPath?.serialize()
+        if let path = currentSNSPath{
+            //e.addPathToSend(path)
+            allPaths?.append(path)
+        }
     }
     
     //Mark: Draw
@@ -90,6 +97,7 @@ class DrawingView: UIView {
                     if let currentPoint = currentPoint{
                         //C. Append to path
                         currentPath?.append(currentPoint)
+                        //D. Collect data to send to Firebase
                         addToSNSPath(point: currentPoint)
                         print("DrawingView::addTouch: A new path with \(currentPoint)")
                     } else {
