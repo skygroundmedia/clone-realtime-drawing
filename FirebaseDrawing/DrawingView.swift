@@ -13,14 +13,15 @@ class DrawingView: UIView {
     
     let strokeThickness:CGFloat = 1.5
     
+    //While you drag your finger, you want to keep a record of all the points
+    var currentPath:[CGPoint]?
     var currentTouch:UITouch?
     var currentColor:UIColor?
     var currentSNSPath:SNSPath?
-    
+    //Used when we add our own values and when we get an update from Firebase
     var allPaths:[SNSPath]?
-    
-    //While you drag your finger, you want to keep a record of all the points
-    var currentPath:[CGPoint]?
+    //Instance of Firebase DB
+    var server = Server.sharedInstance
 
     //MARK: - Firebase Related Data
     //Start preparing the data to send to Firebase
@@ -44,8 +45,11 @@ class DrawingView: UIView {
         currentPath = nil
         //SHow off what has been collected
         currentSNSPath?.serialize()
+        //
         if let path = currentSNSPath{
-            //e.addPathToSend(path)
+            //Send to Firebase Server
+            server.addPathToSend(path: path)
+            //Send to All Paths Array
             allPaths?.append(path)
         }
     }

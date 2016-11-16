@@ -56,7 +56,7 @@ class SNSPath: NSObject {
         }
         //This is the master dictionary you will send to DB
         let dictionary = NSMutableDictionary()
-            dictionary["color"] = color
+            dictionary["color"] = "\(color)"
             dictionary["points"] = coordinates
         print("SNSPath::serialize: \(dictionary)")
         return dictionary

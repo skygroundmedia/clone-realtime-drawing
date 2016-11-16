@@ -8,6 +8,7 @@
 //  https://www.raywenderlich.com/139322/firebase-tutorial-getting-started-2
 
 import UIKit
+import Firebase
 import FirebaseDatabase
 
 class Server {
@@ -16,7 +17,6 @@ class Server {
     private init(){}
     
     let pathsInLine = NSMutableSet()
-
     
     let rootRef = FIRDatabase.database().reference()
     
@@ -26,11 +26,21 @@ class Server {
         ref.setValue(text)
     }
     
-    func addPathToSend(path:SNSPath){
+    // Listen to Firebase when new paths are edited
+    func addPathToSend(path:SNSPath) -> String{
         //A. Get the Firebase Key
-        let key = ref.childByAutoId()
+        let firebaseKey = ref.childByAutoId()
         
+        pathsInLine.add(firebaseKey)
         
-        pathsInLine.add(key)
+        firebaseKey.setValue(path.serialize()) { (error, ref) in
+            if let error = error  {
+                print("Error saving to Firebase \(error.localizedDescription)")
+            } else {
+                self.pathsInLine.remove(firebaseKey)
+            }
+        }
+        //We don't have to worry aout keys anymore
+        return firebaseKey.key
     }
 }
