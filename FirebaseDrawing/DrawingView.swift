@@ -49,9 +49,21 @@ class DrawingView: UIView {
                 //If it's a new key, get the data
                 if !allKeys.contains(firebaseKey) {
                     //Get the data from the key
-                    if let data = data?.value {
-                        print("\n\ndata \(data)\n\n")
+                    if let data = data?.value as? NSMutableDictionary {
+                        let points = data["points"] as! NSArray
+                        let firstPoint = points.firstObject! as! NSDictionary
+                        //print("~~~\n\(firstPoint.value(forKey: "x")!, firstPoint.value(forKey: "y")!)\n~~~")
+                        let x = firstPoint.value(forKey: "x")! as! Double
+                        let y = firstPoint.value(forKey: "y")! as! Double
+                        let p = CGPoint(x: x, y: y)
+                        currentSNSPath = SNSPath(point: p, color: UIColor.blue)
+                        for point in points {
+                           currentSNSPath?.addPoint(point: p)
+                        }
                     }
+                    resetPaths()
+                    sendDataToServer()
+                    clearDisplay()
                 }
             }
         }
@@ -79,15 +91,18 @@ class DrawingView: UIView {
         currentPath = nil
     }
     
-    func sendDataToServer(){
+    func sendDataToServer(shouldSend:Bool){
         if let path = currentSNSPath {
-            //Send to Firebase Server
-            let returnKey = server.saveToDB(path: path)
-            //This is the key from firebase. When firebase announces an update / change
-            //  this will simply say, sure, send the update
-            allKeys.append(returnKey)
-            //Send to All Paths Array
-            allPaths.append(path)
+            //Check to see if the data is local from Firebase
+            if shouldSend {
+                //Send to Firebase Server
+                let returnKey = server.saveToDB(path: path)
+                //This is the key from firebase. When firebase announces an update / change
+                //  this will simply say, sure, send the update
+                allKeys.append(returnKey)
+                //Send to All Paths Array
+                allPaths.append(path)
+            }
         }
     }
     
