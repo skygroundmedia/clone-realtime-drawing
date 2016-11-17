@@ -11,6 +11,8 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    //let server = Server.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

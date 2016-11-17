@@ -18,3 +18,8 @@ pod install
 
 * Firebase
 * Swift 3
+
+
+# Resources
+
+* [Firebase Quickstart](https://github.com/firebase/quickstart-ios/blob/master/database/DatabaseExampleSwift/PostDetailTableViewController.swift)

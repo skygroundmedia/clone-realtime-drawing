@@ -9,6 +9,7 @@
 //
 //  Create an arrary with all the paths but when a new firebase path get's added, let's only transfer that new data path.
 import UIKit
+import Firebase
 
 class DrawingView: UIView {
     
@@ -19,13 +20,32 @@ class DrawingView: UIView {
     var currentTouch:UITouch?
     var currentColor:UIColor?
     var currentSNSPath:SNSPath?
+
     //Used when we add our own values and when we get an update from Firebase
-    var allPaths:[SNSPath]?
+    var allPaths:[SNSPath] = []
     //Each key represents a differnt user publish a path
     var allKeys:[String]?
     //Instance of Firebase DB
     var server = Server.sharedInstance
 
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        listenToNotifications()
+    }
+    
+    //MARK: - Notifications
+    func listenToNotifications(){
+        NotificationCenter.default.addObserver(self, selector: #selector(onNotification), name: NSNotification.Name(rawValue: server.CALLBACK_NAME), object: nil)
+    }
+    
+    func onNotification(sender:Notification){
+        //Dictionary of Return data
+        if let info = sender.userInfo {
+            print(info)
+        }
+    }
+    
     //MARK: - Firebase Related Data
     //Start preparing the data to send to Firebase
     func initSNSPath(point:CGPoint, color:UIColor){
@@ -56,42 +76,55 @@ class DrawingView: UIView {
             //  this will simply say, sure, send the update
             allKeys?.append(returnKey)
             //Send to All Paths Array
-            allPaths?.append(path)
+            allPaths.append(path)
         }
     }
     
     //Mark: Draw
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
-        //A. Check if there's something that needs to be drawn
-        if currentPath != nil {
-            //B. With this context, we need to creat a variable
-            if let context = UIGraphicsGetCurrentContext(){
-                //C. Use the context. Passs the context onto the functions
-                context.setLineWidth( strokeThickness )
-                context.beginPath()
-                context.setStrokeColor(UIColor.black.cgColor)
-                //D. Pass the CG Color we want
-                if let firstPoint = currentPath?.first {
-                    //E. Move to the first point
-                    context.move(to: CGPoint(x: firstPoint.x, y: firstPoint.y))
-                    //F. Since we have the firstPoint, let's find the subsequent points
-                    let startPoint = 1
-                    //G. ONce you have the first point, you can look to other points
-                    //print("\(startPoint), \((currentPath?.count)! - 1)")
-                    if (currentPath?.count)! > 1 {
-                        for i in stride(from: startPoint, to: ((currentPath?.count)! - 1), by: 1) {
-                            let currentPoint = currentPath![i]
-                            //H.  Adding new points in the array to the screen
-                            context.addLine(to: CGPoint(x: currentPoint.x, y: currentPoint.y))
-                        }
+
+        //A. Prepare to draw by first getting the draw context
+        let context = UIGraphicsGetCurrentContext()
+            context?.setLineWidth( strokeThickness )
+            context?.beginPath()
+            context?.setStrokeColor(UIColor.black.cgColor)
+
+        //B. On Touch Up
+        for path in allPaths {
+            //1. Get all the paths
+            let points = path.points
+            //2. Identify the first one
+            if let firstPoint = points.first {
+                //3. Draw line
+                context?.move(to: CGPoint(x: firstPoint.x!, y: firstPoint.y!))
+                //D. Move past index(0) and go to subsequent points
+                if points.count > 1 {
+                    //5.  Adding new points in the array to the screen
+                    for index in stride(from: 1, to: (points.count - 1), by: 1) {
+                        let currentPoint = points[index]
+                        //6. Add line
+                        context?.addLine(to: CGPoint(x: currentPoint.x!, y: currentPoint.y!))
                     }
-                    //Now that we've added the points to the array, let's draw them
-                    context.drawPath(using: CGPathDrawingMode.stroke)
-                    print("DrawingView::draw: Did Draw Lines")
+                }
+                context?.drawPath(using: CGPathDrawingMode.stroke)
+            }
+        }
+
+        //C. On Touch Down
+        if let firstPoint = currentPath?.first {
+            //A. Pick and move to first point
+            context?.move(to: CGPoint(x: firstPoint.x, y: firstPoint.y))
+            //C. Now that you have this first point, find the subsequent points
+            if (currentPath?.count)! > 1 {
+                //D. Move past index(0) and go to subsequent points
+                for i in stride(from: 1, to: ((currentPath?.count)! - 1), by: 1) {
+                    let currentPoint = currentPath![i]
+                    //H.  Adding new points in the array to the screen
+                    context?.addLine(to: CGPoint(x: currentPoint.x, y: currentPoint.y))
                 }
             }
+            context?.drawPath(using: CGPathDrawingMode.stroke)
         }
     }
     

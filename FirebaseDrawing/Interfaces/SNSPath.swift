@@ -56,7 +56,7 @@ class SNSPath: NSObject {
         }
         //B. Create a dictionary of color and coordinates
         let dictionary = NSMutableDictionary()
-            dictionary["color"] = "\(color)"
+            dictionary["color"] = "\(color.htmlRGBColor)"
             dictionary["points"] = coordinates
         
         //print("SNSPath::serialize: \(dictionary)")
