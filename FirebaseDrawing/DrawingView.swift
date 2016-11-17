@@ -28,7 +28,6 @@ class DrawingView: UIView {
     var allKeys:[String] = []
     //Instance of Firebase DB
     var server = Server.sharedInstance
-
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -52,17 +51,22 @@ class DrawingView: UIView {
                     if let data = data?.value as? NSMutableDictionary {
                         let points = data["points"] as! NSArray
                         let firstPoint = points.firstObject! as! NSDictionary
-                        //print("~~~\n\(firstPoint.value(forKey: "x")!, firstPoint.value(forKey: "y")!)\n~~~")
                         let x = firstPoint.value(forKey: "x")! as! Double
                         let y = firstPoint.value(forKey: "y")! as! Double
-                        let p = CGPoint(x: x, y: y)
-                        currentSNSPath = SNSPath(point: p, color: UIColor.blue)
+                        let fp = CGPoint(x: x, y: y)
+                        currentSNSPath = SNSPath(point: fp, color: UIColor.blue)
+                        
                         for point in points {
-                           currentSNSPath?.addPoint(point: p)
+                            if let p = point as? NSObject {
+                                let x = p.value(forKey: "x")! as! Double
+                                let y = p.value(forKey: "y")! as! Double
+                                let p = CGPoint(x: x, y: y)
+                                currentSNSPath?.addPoint(point: p)
+                            }
                         }
                     }
                     resetPaths()
-                    sendDataToServer()
+                    sendDataToServer(shouldSend: false)
                     clearDisplay()
                 }
             }
@@ -100,9 +104,10 @@ class DrawingView: UIView {
                 //This is the key from firebase. When firebase announces an update / change
                 //  this will simply say, sure, send the update
                 allKeys.append(returnKey)
-                //Send to All Paths Array
-                allPaths.append(path)
             }
+            //If it's not from Firebase
+            //Send to All Paths Array
+            allPaths.append(path)
         }
     }
     
@@ -213,13 +218,13 @@ class DrawingView: UIView {
         print("DrawingView::touchesEnded:")
         addTouch(touches: touches)
         resetPaths()
-        sendDataToServer()
+        sendDataToServer(shouldSend: true)
         super.touchesEnded(touches, with: event)
     }
 
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         resetPaths()
-        sendDataToServer()
+        sendDataToServer(shouldSend: true)
         print("DrawingView::touchesCancelled:")
         clearDisplay()
         super.touchesCancelled(touches, with: event)
