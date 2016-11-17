@@ -10,6 +10,7 @@
 //  Create an arrary with all the paths but when a new firebase path get's added, let's only transfer that new data path.
 import UIKit
 import Firebase
+import FirebaseDatabase
 
 class DrawingView: UIView {
     
@@ -24,7 +25,7 @@ class DrawingView: UIView {
     //Used when we add our own values and when we get an update from Firebase
     var allPaths:[SNSPath] = []
     //Each key represents a differnt user publish a path
-    var allKeys:[String]?
+    var allKeys:[String] = []
     //Instance of Firebase DB
     var server = Server.sharedInstance
 
@@ -41,8 +42,18 @@ class DrawingView: UIView {
     
     func onNotification(sender:Notification){
         //Dictionary of Return data
-        if let info = sender.userInfo {
-            print(info)
+        if let info = sender.userInfo as? Dictionary<String,FIRDataSnapshot> {
+            let data = info["send"]
+            //If firebase has a key, store it in firebasekey to prevent duplicates
+            if let firebaseKey = data?.key{
+                //If it's a new key, get the data
+                if !allKeys.contains(firebaseKey) {
+                    //Get the data from the key
+                    if let data = data?.value {
+                        print("\n\ndata \(data)\n\n")
+                    }
+                }
+            }
         }
     }
     
@@ -74,7 +85,7 @@ class DrawingView: UIView {
             let returnKey = server.saveToDB(path: path)
             //This is the key from firebase. When firebase announces an update / change
             //  this will simply say, sure, send the update
-            allKeys?.append(returnKey)
+            allKeys.append(returnKey)
             //Send to All Paths Array
             allPaths.append(path)
         }

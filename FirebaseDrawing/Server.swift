@@ -29,8 +29,8 @@ class Server {
     
     func listenToDB(){
         //Listen whenever a child has been added
-        refHandle = ref.observe(.childAdded, with: { (snapshot) in
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.CALLBACK_NAME), object: nil, userInfo: ["send":snapshot])
+        refHandle = ref.observe(.childAdded, with: { (snapshot:FIRDataSnapshot) in
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: self.CALLBACK_NAME), object: nil, userInfo: ["send": snapshot])
         })
     }
     
